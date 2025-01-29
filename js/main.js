@@ -18,7 +18,6 @@
           const a = document.createElement("a");
           a.textContent = planet.name;
           a.dataset.url = planet.url;
-          a.href = "#";
           li.appendChild(a);
           ul.appendChild(li);
         });
@@ -27,7 +26,7 @@
       })
 
       .then(function () {
-        const links = document.querySelectorAll(".planet-list li ");
+        const links = document.querySelectorAll(".planet-list ul li ");
         links.forEach(function (link) {
           link.addEventListener("click", getDetails);
         });
@@ -40,7 +39,7 @@
   function getDetails(e) {
     e.preventDefault();
     const url = e.currentTarget.dataset.url;
-    fetch(`${url}`)
+    fetch(`${baseUrl}`)
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);
