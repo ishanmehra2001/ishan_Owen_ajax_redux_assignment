@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Star-Wars-planets</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/grid.css" />
-    <title>Star-Wars-planets</title>
+    <script defer src="js/main.js"></script>
   </head>
   <body>
-    <script src="js/main.js"></script>
+    <section class="grid-con">
+      <img class="sun" src="images/sun.png" alt="sun" />
+
+      <div class="logo col-start-2 col-span-full">
+        <img src="images/logo.png" alt="logo" />
+      </div>
+      <div class="navigation col-span-full">
+        <h2>PLANETS</h2>
+        <div class="planet-list">
+          <!-- planets list from api -->
+        </div>
+      </div>
+
+      <div class="col-span-full m-col-span-6">
+        <section id="details-con">
+          <!-- template for the planet details -->
+        </section>
+        <template class="details-template">
+          <h3 class="planet-name"></h3>
+          <p class="planet-rotation"></p>
+          <p class="planet-orbital"></p>
+          <p class="planet-diameter"></p>
+          <p class="planet-climate"></p>
+          <p class="planet-gravity"></p>
+          <p class="planet-terrain"></p>
+          <p class="planet-water"></p>
+          <p class="planet-population"></p>
+        </template>
+      </div>
+
+      <div class="planet-image">
+        <!-- image will go here -->
+      </div>
+    </section>
   </body>
 </html>

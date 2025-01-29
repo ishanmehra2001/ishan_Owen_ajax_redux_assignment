@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../sass/base/_typography.scss","../sass/pages/_home.scss"],"names":[],"mappings":"AAAA,KACI,yCAGJ,EACI,mBAGJ,GACI,gBACA,gBACA,eACA,mBAGJ,GACI,gBACA,eAGJ,EACI,gBACA,eACA,iBCvBJ,KACE","file":"main.css"}
+{"version":3,"sourceRoot":"","sources":["../sass/pages/_home.scss"],"names":[],"mappings":"AAAA,KACE,sBACA,WAGF,MACE,YACA,iBAGF,YACE,aACA,sBACA,SACA,iBACA,kBACA,6BACA,eACA,mBAGF,GACE,gBACA,mBAGF,KACE,kBACA,WACA,0BACA,SACA,UACA","file":"main.css"}
