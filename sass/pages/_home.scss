@@ -1,3 +1,9 @@
+body {
+  background-color: black;
+  color: white;
+  overflow: hidden;
+}
+
 .logo {
   width: 110px;
   margin-left: 55px;
@@ -26,4 +32,12 @@ li {
   top: 60px;
   left: 80px;
   scale: 0.9;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
