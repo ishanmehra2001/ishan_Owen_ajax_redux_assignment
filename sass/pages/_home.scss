@@ -1,4 +1,3 @@
-/* General Styles */
 body {
   background-color: black;
   color: white;
@@ -6,13 +5,13 @@ body {
   text-align: center;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
-/* Logo Styling */
-.logo {
-  width: 130px;
-  margin-left: 50%;
-  margin-right: 50%;
+.logo img {
+  width: 140px;
+  align-items: center;
+  filter: drop-shadow(0 0 8px white);
 }
 
 .sun {
@@ -24,21 +23,19 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Navigation Styling */
 .navigation {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 15px;
   text-transform: uppercase;
-  margin-top: 8px;
 }
 
 .planet-list {
   display: flex;
   gap: 10px;
-  width: 90%;
-  max-width: 400px;
+  width: 95%;
+  max-width: 450px;
 }
 
 .planet-list ul {
@@ -58,35 +55,33 @@ body {
 .planet-list li:hover {
   filter: drop-shadow(0 0 8px white);
   cursor: pointer;
-  text-decoration: underline;
-}
-
-/* Highlight Selected Planet */
-.planet-list a.selected {
-  border: 1px solid white;
-  background-color: rgba(255, 255, 255, 0.2);
+  text-decoration: wavy underline;
 }
 
 /* Planet Details Styling */
 .details-con {
+  position: absolute;
   margin-top: 130px;
   padding: 10px;
   width: 90%;
-  max-width: 350px;
-  margin-left: 0;
+  max-width: 250px;
+  margin-left: 0px;
+  z-index: 5;
 }
 
 .planet-name {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: bold;
   text-transform: uppercase;
-  text-decoration: underline;
+  border-bottom: 2px solid white;
+  text-align: left;
   margin: 0;
   padding: 0;
+  margin-bottom: 25px;
 }
 
 .details-con p {
-  font-size: 14px;
+  font-size: 15px;
   text-align: left;
   margin: 8px 0;
 }
@@ -94,4 +89,67 @@ body {
 .details-con p::before {
   content: counter(list-item) ". ";
   counter-increment: list-item;
+}
+
+.planet {
+  position: absolute;
+  z-index: -5;
+  top: 65%;
+  left: 65%;
+  scale: 2.8;
+}
+
+// moving planet animation
+.planet img {
+  animation: rotatePlanet 110s linear infinite;
+}
+
+@keyframes rotatePlanet {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+//for tablet size screen
+
+@media (min-width: 767px) {
+  .logo img {
+    width: 130px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  .sun {
+    scale: 0.8;
+    top: 30%;
+  }
+
+  .navigation {
+    font-size: 14px;
+    margin-top: -70px;
+    margin-left: 40px;
+  }
+  .navigation h2 {
+    margin-bottom: -15px;
+  }
+
+  .planet-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .details-con {
+    width: 80%;
+    max-width: 300px;
+    margin-top: 190px;
+  }
+
+  .planet {
+    top: 60%;
+    left: 60%;
+    scale: 2; /* Adjust planet size for better visibility */
+  }
 }

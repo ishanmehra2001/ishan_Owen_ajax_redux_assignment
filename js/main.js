@@ -2,7 +2,22 @@
   const planetList = document.querySelector(".planet-list");
   const reviewTemplate = document.querySelector(".details-template");
   const detailsCon = document.querySelector(".details-con");
-  const baseUrl = `https://swapi.dev/api/planets/`;
+  const planetImage = document.querySelector(".planet img");
+  const baseUrl = "https://swapi.dev/api/planets/";
+
+  // Array of planet images (Make sure these are correctly named)
+  const planetImages = {
+    Tatooine: "images/tatooine.png",
+    Alderaan: "images/alderaan.png",
+    Yavin: "images/yavin.png",
+    Hoth: "images/hoth.png",
+    Dagobah: "images/dagobah.png",
+    Bespin: "images/bespin.png",
+    Endor: "images/endor.png",
+    Naboo: "images/naboo.png",
+    Coruscant: "images/coruscant.png",
+    Kamino: "images/kamino.png",
+  };
 
   function getPlanets() {
     fetch(baseUrl)
@@ -38,6 +53,7 @@
   function getDetails(e) {
     e.preventDefault();
     const url = e.currentTarget.dataset.url;
+    const planetName = e.currentTarget.textContent;
 
     fetch(url)
       .then((response) => response.json())
@@ -73,6 +89,15 @@
         ).textContent = `Population: ${data.population}`;
 
         detailsCon.appendChild(details);
+
+        //updating the image of planet on click
+        if (planetImages[planetName]) {
+          planetImage.src = planetImages[planetName];
+          planetImage.alt = planetName;
+        } else {
+          planetImage.src = "images/default.png";
+          planetImage.alt = "planet burst!";
+        }
       })
       .catch(function (err) {
         console.log(err);
