@@ -4,7 +4,8 @@
   const detailsCon = document.querySelector(".details-con");
   const planetImage = document.querySelector(".planet img");
   const baseUrl = "https://swapi.dev/api/planets/";
-  const loader = document.querySelector("#loader");
+  const loader = document.querySelector(".loader");
+
   // Array of planet images (Make sure these are correctly named)
   const planetImages = {
     Tatooine: "images/tatooine.png",
@@ -20,6 +21,7 @@
   };
 
   function getPlanets() {
+    loader.style.display = "block";
     fetch(baseUrl)
       .then((response) => response.json())
       .then(function (response) {
@@ -44,9 +46,11 @@
         links.forEach(function (link) {
           link.addEventListener("click", getDetails);
         });
+        loader.style.display = "none";
       })
       .catch(function (err) {
         console.log(err);
+        loader.style.display = "none";
       });
   }
 
