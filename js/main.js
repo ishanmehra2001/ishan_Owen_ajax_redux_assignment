@@ -4,12 +4,13 @@
   const detailsCon = document.querySelector(".details-con");
   const planetImage = document.querySelector(".planet img");
   const baseUrl = "https://swapi.dev/api/planets/";
+  const loader = document.querySelector(".loader");
 
   // Array of planet images (Make sure these are correctly named)
   const planetImages = {
     Tatooine: "images/tatooine.png",
     Alderaan: "images/alderaan.png",
-    Yavin: "images/yavin.png",
+    "Yavin IV": "images/yavin.png",
     Hoth: "images/hoth.png",
     Dagobah: "images/dagobah.png",
     Bespin: "images/bespin.png",
@@ -20,6 +21,7 @@
   };
 
   function getPlanets() {
+    loader.style.display = "block";
     fetch(baseUrl)
       .then((response) => response.json())
       .then(function (response) {
@@ -44,9 +46,11 @@
         links.forEach(function (link) {
           link.addEventListener("click", getDetails);
         });
+        loader.style.display = "none";
       })
       .catch(function (err) {
         console.log(err);
+        loader.style.display = "none";
       });
   }
 
@@ -54,12 +58,15 @@
     e.preventDefault();
     const url = e.currentTarget.dataset.url;
     const planetName = e.currentTarget.textContent;
+    
+    detailsCon.innerHTML = "";
+    detailsCon.appendChild(loader);
+    loader.style.display = "block";
 
     fetch(url)
-      .then((response) => response.json())
-      .then(function (data) {
-        console.log(data);
-        detailsCon.innerHTML = "";
+    .then((response) => response.json())
+    .then((data) => {
+      detailsCon.innerHTML = "";
         const details = reviewTemplate.content.cloneNode(true);
 
         details.querySelector(".planet-name").textContent = data.name;
@@ -98,10 +105,12 @@
           planetImage.src = "images/default.png";
           planetImage.alt = "planet burst!";
         }
+        loader.style.display = "none";
       })
       .catch(function (err) {
         console.log(err);
         detailsCon.innerHTML = "<p>No details found!</p>";
+        loader.style.display = "none";
       });
   }
 
